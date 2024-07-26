@@ -65,3 +65,19 @@ dfs(v, graph, visited, stack)
 print(*stack)
 visited = [0] * (n + 1)
 bfs(v, graph, visited)
+
+# dfs 깊이 탐색 - stack을 이용
+# 시작 노드부터 !
+# 현재 노드를 stack에 push
+# 그리고 주변 노드 탐색 & 탐색 x 노드를 stack에 넣음
+# 이게 안될때까지 reculsive하게 반복
+# 그 뒤로 pop 하면 dfs임 처음 들어간것부터 출력이니깐
+
+# bfs 넓이 탐색 - queue를 이용 (deque)
+# 시작 노드 부터 !
+# 현재 노드를 queue에 push
+
+# 현재 노드를 pop
+# 그리고 주변 노드 탐색 & 탐색 x 노드를 넣어요
+# 이거를 queue가 비어있을 때 까지 !
+# - 이러면 같은 레벨 다 탐색하고 다음 레벨 감
