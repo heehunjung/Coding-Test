@@ -1,5 +1,3 @@
-
-
 def bfs(graph, x, y):
   queue = deque([(x, y, 1)])  # 큐에 (x좌표, y좌표, 현재까지의 거리) 추가
   graph[y][x] = 0
@@ -21,16 +19,4 @@ def bfs(graph, x, y):
 
   return -1
   
-from collections import deque
 
-n, m = map(int, input().split())
-dx = [1, -1, 0, 0]
-dy = [0, 0, 1, -1]
-
-
-graph = []
-for i in range(n):
-  graph.append(list(map(int, input().strip())))
-
-result = bfs(graph, 0, 0)
-print(result)
