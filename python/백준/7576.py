@@ -1,5 +1,6 @@
 #bfs,dfs
 from collections import deque
+import sys
 
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
@@ -35,18 +36,16 @@ check = 0
 result = []
 for i in range(m):
   for j in range(n):
-    if tomato[i][j] == 1 and not visited[i][j]:
-      check = 1
-count = bfs(visited, tomato, 0)
-if check == 0:
+    if (tomato[i][j] == 0):
+      count = 1
+if count == 0:
   print(0)
-  check = 1
-else:
-  for i in range(m):
-    for j in range(n):
-      if (tomato[i][j] == 0):
-        check = 0
-if check == 0:
-  print(-1)
-else:
-  print(count)
+  sys.exit(0)
+count = bfs(visited, tomato, 0)
+for i in range(m):
+  for j in range(n):
+    if (tomato[i][j] == 0):
+      print(-1)
+      sys.exit(0)
+
+print(count)
