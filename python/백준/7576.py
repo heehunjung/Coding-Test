@@ -12,8 +12,12 @@ def bfs(visited, graph, count):
     for j in range(n):
       if graph[i][j] == 1:
         visited[i][j] = 1
-        queue.append((j, i, count + 1))
+
+        queue.append((j, i, count))
+  #일반적인 bfs랑 다르게 한 노드에서 출발하는게 x
+  #모든 그래프을 초기에 확인 후 시작 노드들을 queue에 저장해둠
   while queue:
+    #queue에 저장된 시작점 노드들을 다 check
     for _ in range(len(queue)):
       now_x, now_y, count = queue.popleft()
       for i in range(4):
@@ -24,7 +28,7 @@ def bfs(visited, graph, count):
           graph[ny][nx] = 1
           visited[ny][nx] = 1
 
-  return count - 1
+  return count
 
 
 n, m = map(int, input().split())
