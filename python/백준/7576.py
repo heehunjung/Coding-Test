@@ -53,3 +53,6 @@ for i in range(m):
       sys.exit(0)
 
 print(count)
+
+
+### 특이한 인풋 -1 -1 -1 , 0 0 0 같은 걸 잘 생각하자~
