@@ -8,3 +8,5 @@ for i in range(1, len(array)):
     else:
       break
   print(array)
+
+#뒤에서 찾으면 자기 자리에 바로 들어가면 됨 - 오름차순 기준
