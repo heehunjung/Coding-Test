@@ -16,3 +16,7 @@ for i in range(1,len(array)):
 result = max(dp)
 
 print(result)
+
+#dp 초기화 할 때 1로 하는게 더 좋겠다
+#각자 기본 값은 1이니깐
+#불필요한 if 문 없앨 수 있음
