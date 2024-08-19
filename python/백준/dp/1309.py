@@ -9,4 +9,9 @@ for i in range(2,n):
     
 result = result % 9901
 
-print(result)
+if n == 1:
+    print(3)
+elif n==2:
+    print(7)
+else:
+    print(result)
