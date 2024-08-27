@@ -8,9 +8,6 @@ def dfs(graph, x,y):
       graph[ny][nx]=1
       dfs(graph,nx,ny)
   return 1
-      
-
-
 n,m= map(int,input().split())
 
 graph = []
