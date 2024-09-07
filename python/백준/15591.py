@@ -1,58 +1,38 @@
-N,Q = map(int,input().split())
+from collections import deque
 
-usados = [[-1 for _ in range(N+1)] for _ in range(N+1)]  #처리 되지 않은 곳은 -1
-
-for i in range(N-1):
-    p,q,r = list(map(int,input().split()))
+def bfs(usado,start):
+    q = deque()
+    q.append(start)
     
-    # 작은 인덱스가 y축으로 
-    if p > q:
-        temp = p
-        p = q
-        q = temp
-    if usados[p][q] == -1:
-        usados[p][q] = r
-    else:
-        usados[p][q] = min(r,usados[p][q])
+    #방문처리 및 결과
+    visited = [0] *(N+1)
+    result = 0
+    
+    while q:
+        curNode = q.pop()
+        for nextNode,value in node[curNode]:
+            if visited[nextNode] == 0 and nextNode != start:
+                if value >= usado:
+                    result += 1
+                    q.append(nextNode)
+                    visited[nextNode] = 1        
+    return result
+        
+N,Q = map(int,input().split()) 
 
-    #자기보다 작은
-    for k in range(1,p):
-        # print(k,",",p,":",usados[k][p])
-        if usados[k][p] != -1:
-            usados[k][q] = min(usados[k][p],usados[p][q])
-    # #자기와 같은
-    # for k in range(p+1,N+1):
-    #     if usados[p][k] != -1:
-    #         if usados[k][q] == -1:
-    #             usados[k][q] = min(usados[p][q],usados[p][k])
-    #         else:
-    #             usados[k][q] = min(usados[p][q],usados[k][q])
-                
-    #자기보다 큰
-    for k in range(q+1,N+1):
-        if usados[q][k] != -1:
-            if usados[p][k] == -1:
-                usados[p][k] = min(usados[q][k],usados[p][q])
-            else:
-                usados[p][k] = min(usados[q][k],usados[p][k])
-
-for usado in usados:
-    print(usado)
-
-print("------------------\n")
+node = [[] for _ in range(N+1)]  
+for _ in range(N-1):  
+    a, b, c = map(int, input().split())  
+    node[a].append((b, c))  
+    node[b].append((a, c))  
 
 
-results = [0 for _ in range(Q)]
-for i in range(Q):
+
+
+for _ in range(Q):
     k,v = map(int,input().split())
-    for index in range(1,v):
-        if usados[index][v] >= k and usados[index][v] != -1 :
-            # print(index,",",v)
-            results[i] += 1
-    for index in range(v+1,N+1):
-        if usados[v][index] >= k and usados[v][index] != -1:
-            # print(v,",",index)
-            results[i] += 1
+    print(bfs(k,v))
 
-for result in results:
-    print(result)
+
+#그냥 내 생각에서 nxn 행렬 채워야 된다 생각하면 일단 bfs,dfs 생각하고
+#dp 까지 이어나가자 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
