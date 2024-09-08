@@ -27,8 +27,6 @@ for _ in range(N-1):
     node[b].append((a, c))  
 
 
-
-
 for _ in range(Q):
     k,v = map(int,input().split())
     print(bfs(k,v))
@@ -36,3 +34,4 @@ for _ in range(Q):
 
 #그냥 내 생각에서 nxn 행렬 채워야 된다 생각하면 일단 bfs,dfs 생각하고
 #dp 까지 이어나가자 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#유사도에대해 깊게 생각하지 않아 어렵게 푼 것 같네
