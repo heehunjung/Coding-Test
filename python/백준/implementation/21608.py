@@ -33,7 +33,7 @@ def insertStudent(student,start):
                 tx = 1
                 ty += 1
                 if ty == N+1 :
-                    return start
+                    return [0,0]
             if emptySit[ty][tx] == max_value:
                 start = [ty,tx]
                 break
@@ -111,7 +111,7 @@ def insertStudent(student,start):
             tx = 1
             ty += 1
             if ty == N+1:
-                return start
+                return [0,0]
         if emptySit[ty][tx] == max_value:
             start = [ty,tx]
             break
