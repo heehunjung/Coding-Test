@@ -12,20 +12,20 @@ def insertStudent(student,start):
             index += 1
     # print("likesfriends",visitedStudent)
     # 1번 조건 x
-    if index == 0:
-        
+    if index == 0:    
         visited[student] = start
         sit[start[0]][start[1]] = student
         
         emptySit[start[0]][start[1]] = -1 # 현재 노드 제외
-        max_value = max(max(row) for row in emptySit)
         for near in nears:
             px = start[1] + near[1]
             py = start[0] + near[0]
             if 1 <= px <= N and 1 <= py <= N:
                 if sit[py][px] == 0:
                     emptySit[py][px] -= 1
-            
+        # print(start[0],start[1],":",  emptySit[start[0]][start[1]])
+        max_value = max(max(row) for row in emptySit)
+
         #다음 3번 조건을 만족할 좌표 계산
         ty,tx = 1,1
         while True:
@@ -33,7 +33,6 @@ def insertStudent(student,start):
                 tx = 1
                 ty += 1
                 if ty == N+1 :
-                    start = [ty-1,tx-1]
                     return start
             if emptySit[ty][tx] == max_value:
                 start = [ty,tx]
@@ -91,23 +90,27 @@ def insertStudent(student,start):
             visited[student] = most_common_coords[0]
             current = most_common_coords[0]
     
+    
     emptySit[current[0]][current[1]] = -1 # 현재 노드 제외
-    max_value = max(max(row) for row in emptySit)
     for near in nears:
         px = current[1] + near[1]
         py = current[0] + near[0]
         if 1 <= px <= N and 1 <= py <= N:
             if sit[py][px] == 0:
                 emptySit[py][px] -= 1
-            
+    max_value = max(max(row) for row in emptySit)
+
     #다음 3번 조건을 만족할 좌표 계산
     ty,tx = 1,1
     while True:
+        # if student == 12:
+            # print("12:",ty,tx)
+        # if student == 13:
+            # print("13:",ty,tx)
         if tx == N+1 :
             tx = 1
             ty += 1
             if ty == N+1:
-                start = [ty-1,tx-1]
                 return start
         if emptySit[ty][tx] == max_value:
             start = [ty,tx]
@@ -156,7 +159,9 @@ for _ in range(studentNum):
 
 for i in range(studentNum):
     start = insertStudent(member[i],start)
-
+    # for sit_ in sit:
+    #     print(sit_)
+    # print(start)
 result = 0
 for i in range(1, N+1):
     for j in range(1, N+1):
@@ -177,4 +182,13 @@ for i in range(1, N+1):
         else:
             result += pow(10, count - 1)  # count >= 1일 때는 해당 규칙 적용
 
+
+# for sit_ in sit:
+#     print(sit_)
+
 print(result)
+
+
+
+#사실 중간 부터 구현이라고 생각했는데 귀찮아서 메소드 분리 안한게 이렇게 고생하게 됐다
+#이렇게 풀면 안된다..
