@@ -9,7 +9,7 @@ def bfs(usado,start):
     result = 0
     
     while q:
-        curNode = q.pop()
+        curNode = q.popleft()
         for nextNode,value in node[curNode]:
             if visited[nextNode] == 0 and nextNode != start:
                 if value >= usado:
