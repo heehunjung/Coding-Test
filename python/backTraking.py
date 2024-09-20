@@ -14,7 +14,7 @@ def back():
             answer.append(i)
             back()
             #return 되서 돌아오면 
-            # 3이 pop 되는거야 
-            answer.pop()
+            # 3이 pop 되는거야 ㄷ
+            answer.pop() # pop 하는 방식이 dfs와 유사 하지만 가지치기 한다는 점에서 다르다
 
 back()
