@@ -3,8 +3,10 @@ from collections import deque
 def bfs(usado,start):
     q = deque()
     q.append(start)
+    
     visited = [0] * (N+1)
     result = 0
+    
     while q:
         curNode = q.popleft()
         for nextNode,value in node[curNode]:
@@ -13,8 +15,8 @@ def bfs(usado,start):
                    result += 1
                    q.append(nextNode)
                    visited[nextNode] = 1
-                   
- 
+# value가 usado 보다 작은 거는 이제 다 제외해도 되니깐 
+# value가 usado 보다 큰 것들만 탐색
 N,Q = map(int,input().split())
 node = [[] for _ in range(N+1)]
 
