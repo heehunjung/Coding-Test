@@ -61,8 +61,8 @@
 #     print("YES")
 # else:
 #     print("NO")
-
 import sys
+
 def backTraking(cnt):
     global flag
     if cnt == 3:
