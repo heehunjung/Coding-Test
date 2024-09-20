@@ -25,6 +25,11 @@ for _ in range(N-1):
     node[a].append((b, c))  
     node[b].append((a, c))  
 
+for row in node:
+    print(row)
 for _ in range(Q):
     k,v = map(int,input().split())
     print(bfs(k,v))
+    
+    
+# bfs + dp

@@ -66,7 +66,7 @@ import sys
 def backTraking(cnt):
     global flag
     if cnt == 3:
-        if bfs():
+        if bfs(): # 길이를 체크하는게 아니라 성공 실패 여부를 체크하는거고
             flag = True
             return
     else:
@@ -76,6 +76,7 @@ def backTraking(cnt):
                     graph[x][y] = "O"
                     backTraking(cnt+1) # 반환하지 않고 그냥 나온 경우 
                     graph[x][y] = "X" # 그대로 진행
+                    # 이 부분은 그냥 중복되지 않은 순열 뽑는 거랑 같은 거임
 
 def bfs():
     dx = [1,-1,0,0]
