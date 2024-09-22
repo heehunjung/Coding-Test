@@ -28,7 +28,7 @@ def backTraking(index):
             
             result = backTraking(i+1)
             if result:
-                return True
+                return True # 종료 조건을 도달한 것은 재귀가 끝날 때 까지 
             
             visited[i] = False
             teamA.pop()
