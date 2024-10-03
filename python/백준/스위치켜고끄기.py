@@ -57,3 +57,4 @@ for i, val in enumerate(switch, 1):
     if i % 20 == 1 and i != 1:
         print()  # 20번째 단위마다 줄 바꿈
     print(val, end=" ")
+
