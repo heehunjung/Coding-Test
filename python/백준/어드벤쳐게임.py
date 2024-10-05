@@ -36,7 +36,6 @@ def dfs(current):
                 money = beforeM
     visited[current] = False
     
-
         
 n = -1
 results = []
