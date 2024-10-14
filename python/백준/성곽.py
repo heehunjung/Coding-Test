@@ -57,7 +57,6 @@ for i in range(m):
             room_v.append(depth)
             result = max(depth,result)
 
-for room in rooms:
     
 print(room_num)
 print(result)
