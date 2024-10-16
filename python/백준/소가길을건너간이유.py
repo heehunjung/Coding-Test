@@ -1,9 +1,10 @@
-from collections import deque
+from collections import deque,defaultdict
 
 n,k,r  = map(int,input().split())
 moves = [(1,0),(-1,0),(0,1),(0,-1)]
 maps = [[0 for _ in range(n+1)] for _ in range(n+1)]
-roads = [[[] for _ in range(n+1)] for _ in range(n+1)]
+# roads = [[[] for _ in range(n+1)] for _ in range(n+1)]
+roads = defaultdict(list)
 points = []
 result = 0
 
@@ -20,7 +21,7 @@ def bfs(start,visited):
             px,py = x + move[0] , y + move[1]
             if 1 <= px < n+1 and 1 <= py < n+1 and visited[px][py] == 0:
          
-                if [px,py] not in roads[x][y]:
+                if (px,py) not in roads[x,y]:
                     if [px,py] in points:
                         result += 1
                         visited[px][py] = 1        
@@ -31,8 +32,8 @@ def bfs(start,visited):
 
 for _ in range(r):
     x1,y1,x2,y2 = map(int,input().split())
-    roads[x1][y1].append([x2,y2])
-    roads[x2][y2].append([x1,y1])
+    roads[(x1,y1)].append((x2,y2))
+    roads[(x2,y2)].append((x1,y1))
     
     
 for _ in range(k):
@@ -50,8 +51,3 @@ for point in points:
 print(result//2)
     
 
-
-                
-                
-    
-    
