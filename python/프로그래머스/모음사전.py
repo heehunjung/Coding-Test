@@ -8,3 +8,10 @@ def solution(word):
 
     words.sort()
     return words.index(word) + 1
+
+def test():
+    for p in product('ab','12'):
+        print(p)
+    
+    for p in product('ab',repeat=2):
+        print(p)    
