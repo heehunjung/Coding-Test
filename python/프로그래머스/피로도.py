@@ -26,18 +26,23 @@ def solution(k, dungeons):
     answer = -1
     length = len(dungeons)
     visited = [False for _ in range(length)]
+    
     for i in range(length):
+    
         mini = dungeons[i][0]
+    
         if mini <= k:
             visited[i] = True
-            answer = max(answer,dfs(dungeons,length,k-dungeons[i][1],visited,1));
+            answer = max(answer,dfs(dungeons,length,k-dungeons[i][1],visited,1))
             visited[i] = False
+    
     return answer
 
 def dfs(dungeons,length,k,visited,result):
     max_result = result
     
     for i in range(length):
+    
         if visited[i] == False:
             if k >= dungeons[i][0]:
                 visited[i] = True
