@@ -2,17 +2,6 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] queue1, int[] queue2) {
-        long q1 = 0;
-        long q2 = 0;
-        for (int i = 0; i< queue1.length; i++) {
-            q1 += queue1[i];
-            q2 += queue2[i];
-        }
-        if ((q1 + q2) % 2 != 0) return -1;
-        long target = (q1 + q2) / 2;        
-        if (target == q1) {
-            return 0;
-        }
 
         // int[] combined = new int[queue1.length + queue2.length];
         // for (int i = 0; i < queue1.length; i++) {
@@ -23,22 +12,26 @@ class Solution {
         // }
         // return dfs(queue1, queue2, 0, 0, target, q1, 0);
         // return prefixSum(combined, target);
-        return greedy(queue1, queue2, target, q1, q2);
+        return greedy(queue1, queue2);
     }
     
-    private int greedy(int[] q1, int[]q2,long target,long s1, long s2) {
+    private int greedy(int[] q1, int[]q2) {
         Queue<Integer> dq1 = new LinkedList<>();
         Queue<Integer> dq2 = new LinkedList<>();
+        long s1 = 0;
+        long s2 = 0;
         for(int i=0; i< q1.length;i++) {
             dq1.offer(q1[i]);
+            s1 += q1[i];
             dq2.offer(q2[i]);
+            s2 += q2[i];
         }
-        
+        long target = (s1 + s2)/2;
         int length = q1.length;
         int count = 0;
         while (s1 != s2) {
             int temp = 0;
-            if (dq1.size()==0 || dq1.size()==length*2) {
+            if(count > length * 4) {
                 return -1;
             }
             
@@ -48,7 +41,6 @@ class Solution {
                 s1 -= temp;
                 s2 += temp;
                 dq2.offer(temp);
-                
             }
             if (s1 < s2) {
                 count += 1;
@@ -60,14 +52,7 @@ class Solution {
         }
         return count;   
     }
-        private long sum(Queue<Integer> q) {
-            long sum = 0;
-            for (int v: q) {
-                sum += v;
-            }
-            return sum;
-        }
-    }
+}
 //     private int prefixSum(int[] arr, long target) {
 //         long[] prefix_sum = new long[arr.length];
 //         long result = target * 2 + 1;
