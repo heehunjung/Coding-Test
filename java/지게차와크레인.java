@@ -73,6 +73,7 @@ class Solution {
             if (0<=nx && nx<STORAGE.length && 0 <= ny && ny < STORAGE[0].length) {
                 if(visited[nx][ny] && !temp[nx][ny]) {
                     dfs(nx,ny,temp);
+                    if (isBlocked) return;
                 }
             } else {
                 isBlocked = true;
